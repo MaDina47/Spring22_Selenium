@@ -11,5 +11,6 @@ public class UseSelenium {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.com");
+
     }
 }
