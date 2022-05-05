@@ -82,7 +82,6 @@ public class SeleniumHW3 {
         By yearLocator = By.xpath("//select[@aria-label='Year']//option[@selected='1']");
         String year = driver.findElement(yearLocator).getText();
         //System.out.println(year);
-        driver.quit();
 //        ArrayList currentDate = new ArrayList<>(Arrays.asList(month,day,year));
 //        System.out.println(currentDate);
         String newDate = month + ", " + day + ", " + year;
@@ -90,6 +89,7 @@ public class SeleniumHW3 {
         Date td = new Date();
         SimpleDateFormat today = new SimpleDateFormat("MMM, d, yyyy");
         Assert.assertEquals(newDate, today.format(td), "not equal");
+        driver.quit();
     }
         @Test
         public void HW3_TC3() {
@@ -105,7 +105,27 @@ public class SeleniumHW3 {
             WebElement hover = driver.findElement(locator);
             Actions action = new Actions(driver);
             action.moveToElement(hover).perform();
+
+            //get title
+            String getText = driver.findElement(By.xpath("//a[@href='/economy-church-chairs/']")).getText();
+            System.out.println(getText);
+
+            // get href url
+            String getTx = driver.findElement(By.xpath("//a[@href='/economy-church-chairs/']")).getAttribute("href");
+            System.out.println(getTx);
+
             driver.findElement(By.xpath("//a[@href='/economy-church-chairs/']")).click();
+
+            String url = driver.getCurrentUrl();
+            System.out.println(url);
+
+            String getText1 = driver.findElement(By.xpath("//h1[@class='page-heading']")).getText();
+            System.out.println(getText1);
+
+
+            Assert.assertEquals(getTx,url, "page doesn't match");
+
+            Assert.assertEquals(getText,getText1,"page doesn't match");
 
             driver.quit();
         }
