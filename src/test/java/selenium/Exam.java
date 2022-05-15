@@ -3,6 +3,7 @@ package selenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashSet;
@@ -116,12 +117,18 @@ public class Exam {
         String newtemp2 = temp2.substring(0, 2);
         int tt2 = Integer.parseInt(newtemp2);
         System.out.println(tt2);
-        if (tt > tt1 && tt < tt2) {
-            System.out.println("The current temperature is in between the low and high temp");
 
-        } else {
-            System.out.println("The current temperature is not between the low and high temp");
-        }
+        boolean abc = tt > tt1 && tt < tt2;
+        Assert.assertTrue(abc);
+
+//        if (tt > tt1 && tt < tt2) {
+//            System.out.println("The current temperature is in between the low and high temp");
+//            Assert.assertTrue(true);
+//
+//        } else {
+//            System.out.println("The current temperature is not between the low and high temp");
+//            Assert.assertTrue(false);
+//        }
         driver.quit();
     }
     // Question 2
